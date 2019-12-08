@@ -1,0 +1,119 @@
+================= Selector ========================
+Syntax	Description	Example
+$("*")	Selects all elements	
+$(this)	Selects the current HTML element	
+$("p.intro")	Selects all <p> elements with class="intro"	
+$("p:first")	Selects the first <p> element	
+$("ul li:first")	Selects the first <li> element of the first <ul>	
+$("ul li:first-child")	Selects the first <li> element of every <ul>	
+$("[href]")	Selects all elements with an href attribute	
+$("a[target='_blank']")	Selects all <a> elements with a target attribute value equal to "_blank"	
+$("a[target!='_blank']")	Selects all <a> elements with a target attribute value NOT equal to "_blank"	
+$(":button")	Selects all <button> elements and <input> elements of type="button"	
+$("tr:even")	Selects all even <tr> elements	
+$("tr:odd")	Selects all odd <tr> elements
+
+================== Events ===========================
+Mouse Events
+click		
+dblclick	
+mouseenter	
+mouseleave	
+************
+Keyboard Events	
+keypress		
+keydown			
+keyup			
+*************
+Form Events		
+submit			
+change			
+focus			
+blur			
+*************
+Document/Window Events
+load
+resize
+scroll
+unload
+====================== effects ==============================
+Effects
+Hide / Show
+$("#demo").hide();      // sets to display: none
+$("#demo").show(200);   // shows hidden elemnt with animation (speed)
+$("#demo").toggle();    // toggle between show and hide
+
+$( "#element" ).hide( "slow", function() {  // hide with callback function
+    console.log( "Animation complete." );
+});
+Fade
+fadeIn, fadeOut, fadeToggle, fadeTo
+$("#demo").fadeIn();                // fade in a hidden element
+$("#demo").fadeOut(300);            // fade out
+$("#demo").fadeToggle("slow");      // toggle between fadeIn and hadeOut
+$("#demo").fadeTo("slow", 0.25);    // fades to 0.25 opacity
+Slide
+slideDown, slideUp, slideToggle
+$("#demo").slideDown();
+$("#demo").slideUp("slow");
+$("#demo").slideToggle();
+Animate
+$(selector).animate({params},speed,callback);
+$("div").animate({
+    opacity: '0.5',
+    left: '200px',
+    height: '200px'
+});
+stop() Method
+$("#demo").stop();
+$('#demo').mouseleave(function(event) {     // hover end
+    $('.tab').stop().animate({              // stop() method
+        opacity : '0.5',
+        marginTop: '10px'
+    }, 500, function() {                    // animation complete
+        $('#demo').removeClass('hovered');  // callback function
+    });
+});
+$('#demo').mouseover(function(event) {      // hover begin
+    $('.tab').stop().animate({              // stop() method
+        opacity : '1',
+        marginTop: '0px'
+    }, 300, function() {                    // animation complete
+        $('#demo').addClass('hovered');     // callback function
+    });
+});
+Chaining
+$("#demo").css("backgroundColor", "green").slideUp(500).slideDown(500);
+
+
+=================== HTML DOM : Get() & set("") or callback =========================
+text() - Sets or returns the text content of selected elements
+html() - Sets or returns the content of selected elements (including HTML markup)
+val() - Sets or returns the value of form fields
+CallBack exemple : 
+$("#btn1").click(function(){
+  $("#test1").text(function(i, origText){
+    return "Old text: " + origText + " New text: Hello world!
+    (index: " + i + ")";
+  });
+});
+
+
+******** Attributes *******************
+$("#link").attr("href");                    // get an attribute
+$("#link").attr("href",'https://htmlg.com'); // set attribute
+$("#link").attr({
+    "href" : "https://htmlg.com",            // setting multiple attributes
+    "title" : "HTML Editor"
+});
+$("#link").attr("href", function(i, origValue){
+    return origValue + "/help";             // callback function gets and changes the attribute
+});
+
+************* add("") ***************
+append() - Inserts content at the end of the selected elements
+prepend() - Inserts content at the beginning of the selected elements
+after() - Inserts content after the selected elements
+before() - Inserts content before the selected elements
+
+

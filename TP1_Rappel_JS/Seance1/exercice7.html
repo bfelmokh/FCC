@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Exercice Jquery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+.colorchange1 {
+    background-color:blue;
+}
+.colorchange2 {
+    background-color:red;
+}
+</style>
+<script>
+    $(document).ready(function(){
+      $("ul").click(function(){
+          alert($("li").length);
+          $("li:eq(3)").css("background-color","red");
+      });
+
+      $("li").hover(function(){
+          $(this).filter(".grp1").toggleClass("colorchange1");
+          $(this).filter(".grp2").toggleClass("colorchange2");
+      })
+
+    });
+    </script>
+</head>
+<body>
+<div>
+<ul>
+<li class="grp1"> élément 1</li>
+<li class="grp2"> élément 2</li>
+<li class="grp1"> élément 3</li>
+<li class="grp1"> élément 4</li>
+<li class="grp2"> élément 5</li>
+</ul>
+</div>
+</body>
+</html>

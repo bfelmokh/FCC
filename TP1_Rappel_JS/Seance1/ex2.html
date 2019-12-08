@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+  .borderon{
+      border-style:solid;
+      border-color:red;
+  }
+  .borderoff{
+      border-style:none;
+      border-color:red;
+  }
+  </style>
+<script>
+$(document).ready(function(){
+  $("#img1").click(function(){
+    
+    if (($(this).attr("src")) == "cap2dv54.png") {
+      $(this).attr("src",'img2.png');
+      $(this).attr("class",'borderoff');
+    } else {
+      $(this).attr("src",'cap2dv54.png');
+      $(this).attr("class",'borderon');
+    }
+  
+  });
+});
+
+</script>
+</head>
+<body>
+<p style="padding: 50px;">
+<center><img id='img1' src="cap2dv54.png" class="borderon" width="50%" height="50%" /></center>
+</p>
+
+</body>
+</html>

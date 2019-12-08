@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>TP Formulaire</title>
+        <link rel="stylesheet" href="fv.css" type="text/css" />
+        <script src="sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+		<script src="jquery.js"></script>
+		<script src="multifield.js"></script>
+		<script src="validator.js"></script>
+	</head>
+	<body>
+		
+		<br>
+		<h1 title='how forms should be done.'>Forms: validation, Sweetalert2 &amp; Get</h1>
+		
+		<form action="exemple_action.html" method="GET" novalidate>
+			<fieldset>
+				
+				<div class="item">
+					<label>
+						<span>cin</span>
+						<input type="number" name="cin" placeholder="exp: 09678123" required="required" data-validate-length-range="8,8" />
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>Champ obligatoire. <em>numérique de 8 chiffres.</em> </p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Nom prénom</span>
+						<input name="nom" data-validate-length-range="1,30" placeholder="exp: John Marc" type="text" required="required"/>
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>This field is only validated when it has a value.<br /><em>non vide de 30 caractères.</em></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Age</span>
+						<input name="age" class='number' required="required" type="number" data-validate-minmax="18,100" />
+                    </label>
+                    <div class='tooltip help'>
+                            <span>?</span>
+                            <div class='content'>
+                                <b></b>
+                                <p>This field is only validated when it has a value.<br /><em>non vide, numérique, >=18 ans.</em></p>
+                            </div>
+                        </div>
+				</div>
+			</fieldset>
+			
+			<button id='send' type='submit'>Submit</button>
+		</form>
+		<script>
+            
+
+            // CommonJS
+            
+			// ATT : ce script doit être inséré APRES le formulaire
+			$('form').submit(function(e){ // Traitement lancé quand l'utilisateur valide le formulaire
+				e.preventDefault();
+				var submit = true;
+				if( validator.checkAll( $(this) ) ) // Si le formulaire est valide on va à l'action
+                {
+                    Swal.fire({
+                    title: 'Great !',
+                    text: 'Forms submitted',
+                    icon: 'success',
+                    confirmButtonText: 'Confirm',
+                    preConfirm: () => {
+                        this.submit();
+                    }
+                }) ;
+                               
+                }
+                else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Check Your Input',
+                    icon: 'error',
+                    confirmButtonText: 'Close'
+                }) ;
+                return false;	// Sinon on reste dans le formulaire
+            }
+			});
+		</script>		
+		
+	</body>
+</html>	

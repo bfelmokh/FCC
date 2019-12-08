@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+</style>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){  
+    if ($("#carre").css("display")=='none') {
+        $("#carre").show();
+        $("#message").text("");
+    }
+  });
+  $("#btn2").click(function(){  
+    if (($("#carre").css("display"))=='block') {
+        $("#carre").hide();
+        $("#message").text("Objet Masqué");
+    }
+  });
+  $("#btn3").click(function(){  
+    alert(($("#carre").css("display")))
+    if ($("#carre").show()) {
+        $("#carre").animate({left:'+=30px'});
+    $("#message").text("Objet Déplacé");
+    }
+  });
+});
+
+</script>
+</head>
+<body bgcolor="red">
+    <div id="carre" style="border-style: solid;width:100px;height:100px;position: relative;display:block;"></div>
+    <center><p id="message"></p></center>
+    <input id="btn1" type="button" value="btn1">
+    <input id="btn2" type="button" value="btn2">
+    <input id="btn3" type="button" value="btn3">
+<p>
+    <h1>Exercice 3</h1>
+Développer une page contenant un carré et trois boutons avec un arrière-plan en rouge.
+1. Afficher le carré s'il est déjà masqué.
+2. Masquer le carré s’il est déjà affiché : après avoir masqué le carré on affiche le message « objet Masqué ».
+3. Animer le carré s'il est affiché : l'animation consiste à changer de position du carré avec un décalage vers la droite de 30px. A la fin de l'animation, on affiche le message « objet déplacé ».
+4. Effectuer une autre animation de votre choix.
+</p>
+</body>
+</html>

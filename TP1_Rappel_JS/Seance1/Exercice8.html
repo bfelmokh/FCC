@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Exercice Jquery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .Parent,.Parents,.Children,.Next,.NextAll,.Prev,.PrevAll,.Siblings,.Find{
+        border-style: solid;
+        border-color: red;
+        border-width: 1px;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+      $("#parent").hover(function(){
+          $("#MENU").parent().toggleClass("Parent");
+      })
+      $("#parents").hover(function(){
+          $("#MENU").parents().toggleClass("Parents");
+      })
+      $("#children").hover(function(){
+          $("#MENU2").children().toggleClass("Children");
+      })
+      $("#next").hover(function(){
+          $("#MENU").next().toggleClass("Next");
+      })
+      $("#prev").hover(function(){
+          $("#MENU").prev().toggleClass("Prev");
+      })
+      $("#nextAll").hover(function(){
+          $("#MENU").nextAll().toggleClass("NextAll");
+      })
+      $("#prevAll").hover(function(){
+          $("#MENU").prevAll().toggleClass("PrevAll");
+      })
+      $("#siblings").hover(function(){
+          $("#MENU").siblings().toggleClass("Siblings");
+      })
+      $("#find").hover(function(){
+          $("#MENU").find("li").toggleClass("Find");
+      })
+    });
+    </script>
+</head>
+<body>
+<div>
+<ul>
+<li> Menu 1
+    <ul>
+        <li>Sous-Menu11</li>
+        <li>Sous-Menu12</li>
+    </ul>
+</li>
+<li> Menu 2
+    <ul id="MENU2">
+        <li>Sous-Menu21</li>
+        <li>Sous-Menu22</li>
+        <li id="MENU">MENU
+            <ul>
+                <li>Sous-Menu221</li>
+                <li>Sous-Menu222
+                    <ul>
+                        <li>Sous-menu2221</li>
+                        <li>Sous-menu2222</li>
+                    </ul>
+                </li>
+                <li>Sous-Menu223</li>
+                <li>Sous-Menu224</li>
+            </ul>
+        </li>
+        <li>Sous-Menu23</li>
+        <li>Sous-Menu24</li>
+    </ul>
+</li>
+<li> Menu 3</li>
+</ul>
+
+<input type="button" id="parent" value="Parent" />
+<input type="button" id="parents" value="Parents" />
+<input type="button" id="children" value="Children" />
+<input type="button" id="next" value="Next" />
+<input type="button" id="nextAll" value="NextAll" />
+<input type="button" id="prev" value="Prev" />
+<input type="button" id="prevAll" value="PrevAll" />
+<input type="button" id="siblings" value="Siblings" />
+<input type="button" id="find" value="Find(*)" />
+</div>
+</body>
+</html>

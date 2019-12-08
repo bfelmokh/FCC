@@ -1,0 +1,18 @@
+#contenu {
+width: 500px;
+min-height:200px;
+background-color:#CCCCCC;
+float: left
+}
+
+#carte {
+      width: 400px;
+      height: 300px;
+background-color:#FF66FF;
+float: left
+}
+
+#ma_carte {
+  width: 400px;
+  height: 400px;
+}

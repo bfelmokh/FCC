@@ -1,0 +1,20 @@
+<html>
+<head><title>Seance1</title></head>
+<body>
+
+<p><h1> Rappel sur JS </h1></p>
+
+Entrer un text  : <input type="text" id="nom"> <br><br>
+
+<input type="button" onclick="toto()" value="modifier le champ">
+<script type="text/javascript">
+function toto() {
+	var obj=document.getElementById("nom");
+	alert('le champ a  pour valeur :'+obj.value);
+	obj.value="autre valeur";
+	alert('maintenant il contient : '+obj.value);
+}
+</script>
+
+</body>
+</html>

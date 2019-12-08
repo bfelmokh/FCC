@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Document sans nom</title>
+    <script type="text/javascript" src="xhr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#auteur").change(function () {
+                alert("idA: ".$("#auteur").attr('id'));
+                $.post("livre.php",
+                    {
+                        idA: $("#auteur").attr('id')
+                    },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function chargerAuteurs() {
+            var xhr = getXhr();
+            xhr.open("GET", "auteur.php", true);
+            xhr.onreadystatechange = function () {
+                if ((xhr.readyState == 4) && (xhr.status == 200)) {
+                    var reponse = xhr.responseText;
+                    document.getElementById("aut").innerHTML = reponse;
+                }
+            }
+            xhr.send(null);
+        }
+      /*  function chargerLivres(ida) {
+            var xhr = getXhr();
+            xhr.open("GET", "livre.php?ida=" + ida, true);
+            xhr.onreadystatechange = function () {
+                if ((xhr.readyState == 4) && (xhr.status == 200)) {
+                    var reponse = xhr.responseText;
+                    document.getElementById("liv").innerHTML = reponse;
+                }
+            }
+            xhr.send(null);
+        }
+        */
+    </script>
+</head>
+
+<body onload="chargerAuteurs()">
+    Auteurs:<div id="aut" style="display:inline"></div>
+    Livres:<div id="liv" style="display:inline"></div>
+</body>
+
+</html>

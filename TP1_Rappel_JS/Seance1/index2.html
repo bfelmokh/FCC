@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Seance 1 TP2
+        </title>
+    </head>
+    <bod>
+            Bonjour, <span><b>ceci</b></span> est un petit <span><I>exemple</I></span> de code !
+            <SCRIPT>
+            var t=document.getElementsByTagName("span");
+            alert("Il y a "+t.length+" balises SPAN dans ce document");
+            for (i=0 ; i<t.length ; i++)
+            {
+            alert("Contenu HTML du span n°" +( i+1) + ":" + t[i].innerHTML) ;
+            alert("Contenu textuel du span n°" + (i+1) + ":" + t[i].textContent) ;
+            }
+            </SCRIPT>
+    </bod>
+</html>

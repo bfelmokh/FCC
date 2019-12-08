@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Total Form Validation</title>
+		<link rel="stylesheet" href="fv.css" type="text/css" />
+		<script src="jquery.js"></script>
+		<script src="multifield.js"></script>
+		<script src="validator.js"></script>
+	</head>
+	<body>
+		
+		
+		<h1 title='how forms should be done.'>Forms: validation, styling &amp; semantics</h1>
+		
+		<form action="exemple_action.html" method="post" novalidate>
+			<fieldset>
+				
+				<div class="item">
+					<label>
+						<span>Name</span>
+						<input name="name" placeholder="ex. John f. Kennedy" required="required" />
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>Champ obligatoire </p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Occupation</span>
+						<input class='optional' name="occupation" data-validate-length-range="5,20" type="text" />
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>An optional field. This field is only validated when it has a value.<br /><em>Minimum 5 chars for this example.</em></p>
+						</div>
+					</div>
+					<span class='extra'>(optional)</span>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>email</span>
+						<input name="email" class='email' required="required" type="email" />
+					</label>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Number</span>
+						<input type="number" class='number' name="number" data-validate-minmax="10,100" required='required'>
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>Number must be between 10 and 100</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Date</span>
+						<input class='date' type="date" name="date" required='required'>
+					</label>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Telephone</span>
+						<input type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20">
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>Notice that for a phone number user can input a '+' sign, a dash '-' or a space ' '</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>Drop down selection</span>
+						<select class="required" name="dropdown">
+							<option value="">-- none --</option>
+							<option value="o1">Option 1</option>
+							<option value="o2">Option 2</option>
+							<option value="o3">Option 3</option>
+						</select>
+					</label>
+					<div class='tooltip help'>
+						<span>?</span>
+						<div class='content'>
+							<b></b>
+							<p>Choose something or choose not. what shall it be?</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item">
+					<label>
+						<span>url</span>
+						<input name="url" placeholder="http://www.website.com" required="required" type="url" />
+					</label>
+				</div>
+				
+				
+			</fieldset>
+			
+			<button id='send' type='submit'>Submit</button>
+		</form>
+		<script>
+			// ATT : ce script doit être inséré APRES le formulaire
+			$('form').submit(function(e){ // Traitement lancé quand l'utilisateur valide le formulaire
+				e.preventDefault();
+				var submit = true;
+				if( validator.checkAll( $(this) ) ) // Si le formulaire est valide on va à l'action
+				this.submit();
+				else 
+				return false;	// Sinon on reste dans le formulaire
+			});
+		</script>		
+		
+	</body>
+</html>	
